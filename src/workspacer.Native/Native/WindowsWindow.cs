@@ -207,6 +207,18 @@ namespace workspacer
             Win32.ShowWindow(_handle, Win32.SW.SW_SHOWMINIMIZED);
         }
 
+        public void SwitchMaximizedStatus()
+        {
+            if(IsMaximized) 
+            {
+                ShowNormal();
+            }
+            else 
+            {
+                ShowMaximized();
+            }
+        }
+
         public void ShowInCurrentState()
         {
             if (IsMinimized)
