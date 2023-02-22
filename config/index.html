@@ -113,27 +113,27 @@
 	<nav class="nav-dekstop nav-main">
 		
 		
-			
-			<a href="">quickstart</a>
 		
-			
-			<a href="">config</a>
+		<a href="../quickstart">quickstart</a>
 		
-			
-			<a href="">keybinds</a>
 		
-			
-			<a href="">screenshots</a>
+		<a href="../config">config</a>
 		
-			
-			<a href="">changelog</a>
+		
+		<a href="../keybindings">keybinds</a>
+		
+		
+		<a href="../screenshots">screenshots</a>
+		
+		
+		<a href="../changelog">changelog</a>
 		
 	</nav>
 	<nav class="nav-dekstop nav-extra">
 		
 		
-			
-			<a href="" class="btn btn-small btn-light">submit an issue</a>
+		
+		<a href="https://github.com/workspacer/workspacer/issues/new" class="btn btn-small btn-light">submit an issue</a>
 		
 	</nav>
 	<button class="nav-phone-toggle btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
@@ -145,26 +145,26 @@
 </div>
 		
 		
-			
-			<a href="" class="btn btn-small btn-light">quickstart</a>
 		
-			
-			<a href="" class="btn btn-small btn-light">config</a>
+		<a href="../quickstart" class="btn btn-small btn-light">quickstart</a>
 		
-			
-			<a href="" class="btn btn-small btn-light">keybinds</a>
 		
-			
-			<a href="" class="btn btn-small btn-light">screenshots</a>
+		<a href="../config" class="btn btn-small btn-light">config</a>
 		
-			
-			<a href="" class="btn btn-small btn-light">changelog</a>
+		
+		<a href="../keybindings" class="btn btn-small btn-light">keybinds</a>
+		
+		
+		<a href="../screenshots" class="btn btn-small btn-light">screenshots</a>
+		
+		
+		<a href="../changelog" class="btn btn-small btn-light">changelog</a>
 		
 		<div class="extra-separator"></div>
 		
 		
-			
-			<a href="" class="btn btn-small">submit an issue</a>
+		
+		<a href="https://github.com/workspacer/workspacer/issues/new" class="btn btn-small">submit an issue</a>
 		
 	</nav>
 </header> 
@@ -279,6 +279,17 @@ This configuration documentation assumes that you have already created the examp
 </ul>
 </li>
 </ul>
+<p>Most plugins can be configured using either an <code>Action</code> to change the default configuration, or by passing a configuration directly. For instance, the menu bar plugin may be configured in either of the following two ways:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>context.AddBar(<span style="color:#66d9ef">new</span> BarPluginConfig()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        FontName = <span style="color:#e6db74">&#34;JetBrainsMono NF&#34;</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context.AddBar(context =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        context.FontName = <span style="color:#e6db74">&#34;JetBrainsMono NF&#34;</span>;
+</span></span><span style="display:flex;"><span>    });
+</span></span></code></pre></div><p>In the examples below, the top method is used, as it explicitly states the type of the configuration (in this case <code>BarPluginConfig</code>).</p>
 <h3 id="menu-bar">Menu Bar</h3>
 <p>Like other tiling window managers workspacer includes a status/menu bar which shows relevant information to improve your workflow, for example: showing your workspaces, your battery level and the time. It can also have additional features provided through custom widgets by creating a class which inherits from <a href="https://github.com/workspacer/workspacer/blob/master/src/workspacer.Bar/BarWidgetBase.cs">BarWidgetBase</a>.</p>
 <p>The bar can be installed like this:</p>
@@ -324,7 +335,8 @@ For example if you wanted to add this <a href="https://fontawesome.com/v5.15/ico
 </li>
 <li><code>TitleWidget</code>
 <ul>
-<li>Shows the title of the current focused window.</li>
+<li>Shows the title of windows in the current workspace.</li>
+<li>Showing all window titles instead of only the focused one can be configured with <code>ShowAllWindowTitles</code>.</li>
 <li>Users can select to show just the name of the program instead of the full window title by using <code>isShortTitle</code> flag.</li>
 <li>More configuration details are available <a href="https://github.com/workspacer/workspacer/blob/master/src/workspacer.Bar/Widgets/TitleWidget.cs">here</a>.</li>
 </ul>
@@ -470,11 +482,11 @@ installed matches the latest one targeted by <code>workspacer</code>.</p>
 	<p>&copy; Licence MIT.</p>
 	<nav class="nav-footer">
 		
-			<a href="">Workspacer</a>
+		<a href="https://github.com/workspacer/workspacer">Workspacer</a>
 		
-			<a href="">Rick Button</a>
+		<a href="https://github.com/rickbutton">Rick Button</a>
 		
-			<a href="">Website</a>
+		<a href="https://rickbutton.me">Website</a>
 		
 	</nav>
 </footer>
