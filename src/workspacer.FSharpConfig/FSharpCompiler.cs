@@ -15,17 +15,9 @@
     {
         private static FSharpChecker checker =
             FSharpChecker.Create(
-                FSharpOption<int>.None,
-                FSharpOption<bool>.None,
-                FSharpOption<bool>.None,
-                FSharpOption<LegacyReferenceResolver>.None,
-                FSharpOption<FSharpFunc<Tuple<string, DateTime>, FSharpOption<Tuple<object, IntPtr, int>>>>.None,
-                FSharpOption<bool>.None,
-                FSharpOption<bool>.None,
-                FSharpOption<bool>.None,
-                FSharpOption<bool>.None,
-                FSharpOption<bool>.None,
-                FSharpOption<bool>.None);
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null, null, null);
 
         private static Regex requireRegex = new Regex("^#r @\"(.*)\"");
 
@@ -54,7 +46,7 @@
                     FSharpOption<int>.None,
                     FSharpOption<CancellationToken>.None
                 );
-            if (result.Item2 != 0)
+            if (FSharpOption<Exception>.get_IsSome(result.Item2))
             {
                 throw new FSharpCompileException(result.Item1[0].Message, result.Item1);
             }

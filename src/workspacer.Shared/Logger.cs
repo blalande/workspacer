@@ -30,7 +30,6 @@ namespace workspacer
             public FuncWriterTarget()
             {
                 _preBuffer = new StringBuilder();
-                this.OptimizeBufferReuse = true;
             }
 
             protected override void Write(LogEventInfo logEvent)
@@ -67,9 +66,7 @@ namespace workspacer
             _file.FileName = Path.Combine(path, "workspacer.log");
             _file.CreateDirs = true;
             _file.ArchiveEvery = FileArchivePeriod.Day;
-            _file.ArchiveNumbering = ArchiveNumberingMode.DateAndSequence;
             _file.MaxArchiveFiles = 7;
-            _file.ConcurrentWrites = true;
 
             LogManager.Configuration = _config;
 

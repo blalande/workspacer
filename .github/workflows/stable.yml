@@ -12,6 +12,10 @@ jobs:
     steps:
     # Build
     - uses: actions/checkout@v4
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
     - name: Get version
       run: Write-Output VERSION="$(([Xml] (Get-Content .\src\workspacer\workspacer.csproj)).Project.PropertyGroup.Version)" >> $env:GITHUB_ENV
     - name: Restore solution
@@ -21,11 +25,11 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: Build
-        path: .\src\workspacer\bin\Release\net7.0-windows\win10-x64\publish\
+        path: .\src\workspacer\bin\Release\net10.0-windows\win-x64\publish\
     - name: Build installer
       run: |
         $env:PATH += ";${env:WIX}bin" # Add to PATH
-        .\scripts\buildinstaller.ps1 -buildDir .\src\workspacer\bin\Release\net7.0-windows\win10-x64\publish\ -version "$env:VERSION-stable"
+        .\scripts\buildinstaller.ps1 -buildDir .\src\workspacer\bin\Release\net10.0-windows\win-x64\publish\ -version "$env:VERSION-stable"
     - uses: actions/upload-artifact@v3
       with:
         name: Setup
@@ -33,7 +37,7 @@ jobs:
     
     # Release
     - name: Zip build output
-      run: Compress-Archive -Path .\src\workspacer\bin\Release\net7.0-windows\win10-x64\publish\* -DestinationPath ".\out\workspacer-$env:VERSION-stable.zip"
+      run: Compress-Archive -Path .\src\workspacer\bin\Release\net10.0-windows\win-x64\publish\* -DestinationPath ".\out\workspacer-$env:VERSION-stable.zip"
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
