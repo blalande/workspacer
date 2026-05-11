@@ -10,7 +10,8 @@
     public interface IWorkspaceManager
     {
         IWorkspace FocusedWorkspace { get; }
-
+        void FocusNextWindow();
+        void FocusPreviousWindow();
         void SwitchToWindow(IWindow window);
         void SwitchToWorkspace(int index);
         void SwitchToWorkspace(IWorkspace workspace);

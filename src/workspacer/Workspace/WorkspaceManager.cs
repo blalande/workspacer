@@ -610,5 +610,73 @@ namespace workspacer
                 }
             }
         }
+        
+        public void FocusNextWindow()
+        {
+            var windows = FocusedWorkspace.ManagedWindows;
+            var didFocus = false;
+            for (var i = 0; i < windows.Count; i++)
+            {
+                var window = windows[i];
+                if (window.IsFocused)
+                {
+                    if (i + 1 == windows.Count)
+                    {
+                        //go to next monitor that has windows
+                        do 
+                        {
+                            this.SwitchFocusToNextMonitor();
+                        }
+                        while(!FocusedWorkspace.ManagedWindows.Any());
+                        FocusedWorkspace.ManagedWindows[0].Focus();
+                    }
+                    else
+                    {
+                        windows[i + 1].Focus();
+                    }
+                    didFocus = true;
+                    break;
+                }
+            }
+            if(!didFocus && windows.Count > 0)
+            {
+                // shouldn’t happen.
+                windows[0].Focus();
+            }
+        }
+
+        public void FocusPreviousWindow()
+        {
+            var windows = FocusedWorkspace.ManagedWindows;
+            var didFocus = false;
+            for (var i = 0; i < windows.Count; i++)
+            {
+                var window = windows[i];
+                if (window.IsFocused)
+                {
+                    if (i  == 0)
+                    {
+                        //go to previous monitor that has windows
+                        do
+                        {
+                            this.SwitchFocusToPreviousMonitor();
+                        } 
+                        while (!FocusedWorkspace.ManagedWindows.Any());
+                        FocusedWorkspace.ManagedWindows[FocusedWorkspace.ManagedWindows.Count - 1].Focus();
+                    }
+                    else
+                    {
+                        windows[i - 1].Focus();
+                    }
+                    didFocus = true;
+                    break;
+                }
+            }
+            if(!didFocus && windows.Count > 0)
+            {
+                // shouldn’t happen.
+                windows[0].Focus();
+            }
+        }
     }
 }
